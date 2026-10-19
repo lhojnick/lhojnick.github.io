@@ -10,6 +10,7 @@
 <meta property="og:image" content="https://lukehojnicki.com/assets/og.png">
 <meta property="og:url" content="https://lukehojnicki.com/">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#13213a">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,160 +19,177 @@
 </head>
 <body>
 
-<header class="site-header">
-  <div class="container">
+<header class="hero navy">
+  <div class="container topbar">
     <a class="brand" href="./">Luke Hojnicki</a>
     <nav aria-label="Main">
       <ul>
         <li><a href="#work">Work</a></li>
         <li><a href="#experience">Experience</a></li>
         <li><a href="#about">About</a></li>
-        <li><a href="assets/resume.pdf">Resume</a></li>
+        <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
+  </div>
+
+  <div class="container hero-grid">
+    <div>
+      <h1>Luke Hojnicki</h1>
+      <p class="statement">I design circuit boards, run statistical process control in the cleanroom, and build AI tools that cut manual review for engineering teams.</p>
+      <p class="sub">Electrical engineering junior at Purdue, concentrating in microelectronics and semiconductors. Looking for summer 2027 internships in semiconductors and technology consulting.</p>
+      <div class="actions">
+        <a class="button button-gold" href="assets/resume.pdf">View resume</a>
+        <a class="button" href="#work">See my work</a>
+      </div>
+    </div>
+    <figure class="hero-photo">
+      <img src="assets/portrait.jpg" width="486" height="600" alt="Luke Hojnicki in a navy suit and blue tie.">
+    </figure>
+  </div>
+
+  <div class="container">
+    <dl class="now">
+      <div><dt>Now</dt><dd>Process control on an HfO₂ etch at Purdue's Birck Nanotechnology Center</dd></div>
+      <div><dt>Summer 2026</dt><dd>R&amp;D intern at International Motors, building AI for warranty claims</dd></div>
+      <div><dt>Spring 2027</dt><dd>Studying at Universidad Carlos III de Madrid</dd></div>
+    </dl>
   </div>
 </header>
 
 <main>
-  <section class="intro container">
-    <h1>Luke Hojnicki</h1>
-    <p class="statement">I design circuit boards, run statistical process control in the cleanroom, and build AI tools that cut manual review for engineering teams.</p>
-    <p class="sub">Electrical engineering junior at Purdue, concentrating in microelectronics and semiconductors. Looking for summer 2027 internships in semiconductors and technology consulting.</p>
-    <div class="actions">
-      <a class="button button-primary" href="assets/resume.pdf">View resume</a>
-      <a class="button" href="mailto:lhojnick@purdue.edu">Email me</a>
-    </div>
-    <dl class="now">
-      <div>
-        <dt>Now</dt>
-        <dd>Process control on an HfO₂ etch at Purdue's Birck Nanotechnology Center</dd>
+  <section class="band" id="work">
+    <div class="container">
+      <div class="band-head">
+        <h2>Selected work</h2>
+        <p>Hardware, process data, and AI tools I've built or led.</p>
       </div>
-      <div>
-        <dt>Summer 2026</dt>
-        <dd>R&amp;D intern at International Motors, building AI for warranty claims</dd>
-      </div>
-      <div>
-        <dt>Spring 2027</dt>
-        <dd>Studying at Universidad Carlos III de Madrid</dd>
-      </div>
-    </dl>
-  </section>
 
-  <section class="section container" id="work">
-    <h2>Selected work</h2>
-
-    <article class="feature">
-      <a class="feature-media" href="magnetometer.html" aria-label="Multi-sensor magnetometer array case study">
-        <img src="assets/pcb-wide.png" width="1464" height="623"
-             alt="Top copper layer of the magnetometer board. Red traces run from the connector and control chips on the left, through a narrow neck, to four sensors placed around a circular cutout on the right.">
-        <ul class="regions">
-          <li><b>Control section</b>Regulator, I²C multiplexer, connectors</li>
-          <li><b>Routing neck</b>Keeps current away from the sensors</li>
-          <li><b>Sensor ring</b>Four 3-axis magnetometers around the cavity</li>
-        </ul>
-      </a>
-      <div class="row">
-        <div>
+      <article class="feature">
+        <a class="feature-media" href="magnetometer.html" aria-label="Magnetometer array case study">
+          <img src="assets/pcb-wide.png" width="1464" height="623"
+               alt="Top copper layer of the magnetometer board. Red traces run from the connector and control chips on the left, through a narrow neck, to four sensors placed around a circular cutout on the right.">
+          <ul class="regions">
+            <li><b>Control section</b>Regulator, I²C mux, connectors</li>
+            <li><b>Routing neck</b>Keeps current off the sensors</li>
+            <li><b>Sensor ring</b>Four 3-axis magnetometers</li>
+          </ul>
+        </a>
+        <div class="feature-body">
+          <p class="tag">Case study</p>
           <h3><a href="magnetometer.html">Multi-sensor magnetometer array</a></h3>
           <p class="meta">Coherent and Quantum Optics Lab, 2025 to 2026</p>
+          <p class="desc">Two daisy-chained boards with eight 3-axis sensors that wrap around an optical cavity inside a vacuum chamber and estimate the magnetic field at its center. I did the schematic, layout, firmware, Python logger, and a 32-page manual.</p>
+          <div class="actions">
+            <a class="button button-gold" href="magnetometer.html">Read the case study</a>
+          </div>
         </div>
-        <div>
-          <p>Two daisy-chained boards with eight 3-axis sensors that wrap around an optical cavity inside a vacuum chamber and estimate the magnetic field at its center. I did the schematic, layout, firmware, Python logger, and a 32-page manual so the next student can run it alone.</p>
-          <a class="read-more" href="magnetometer.html">Read the case study</a>
-        </div>
-      </div>
-    </article>
+      </article>
 
-    <ul class="work-list">
-      <li>
-        <div class="row">
-          <div>
-            <h3>AI triage for emissions warranty claims</h3>
-            <p class="meta">International Motors, 2026</p>
-          </div>
-          <p>Built an XGBoost and LLM model on Databricks that sorts 10,000 warranty claims into a Power BI dashboard. It's projected to halve a review that took the team a full work week, and it was the first project approved under the company's new AI governance process.</p>
-        </div>
-      </li>
-      <li>
-        <div class="row">
-          <div>
-            <h3>Engine benchmark against Cummins</h3>
-            <p class="meta">International Motors, 2026</p>
-          </div>
-          <p>Compared fuel efficiency across 800 vehicle configurations in EPA GEM. The overall result was a split, so I segmented by sales volume and found our engine led in the configurations that outsell the rest about 100 to 1.</p>
-        </div>
-      </li>
-      <li>
-        <div class="row">
-          <div>
-            <h3>First place, company-wide AI hackathon</h3>
-            <p class="meta">International Motors, 2026</p>
-          </div>
-          <p>Won against about 50 teams, mostly full-time engineers, with a tool that turns vehicle health reports into preventive maintenance alerts for emissions parts. Pitched it to executives and was invited to parent company TRATON Group's international hackathon.</p>
-        </div>
-      </li>
-      <li>
-        <div class="row">
-          <div>
-            <h3>Process control for an HfO₂ etch</h3>
-            <p class="meta">VIP Semiconductors, Birck Nanotechnology Center, 2026</p>
-          </div>
-          <p>On an 8-person team fabricating thin-film RC and RLC circuits on 4-inch wafers, with 6 wafers done in two months. I own e-beam metal deposition, apply SPC to separate wafer-to-wafer drift from within-wafer variation, and brief about 12 faculty and research scientists each week.</p>
-        </div>
-      </li>
-    </ul>
+      <ul class="cards">
+        <li class="card">
+          <p class="metric">50%</p>
+          <p class="metric-label">projected cut in manual review time</p>
+          <hr>
+          <h3>AI triage for emissions warranty claims</h3>
+          <p class="meta">International Motors, 2026</p>
+          <p class="desc">An XGBoost and LLM model on Databricks that sorts 10,000 warranty claims into a Power BI dashboard. It was the first project approved under the company's new AI governance process.</p>
+        </li>
+        <li class="card">
+          <p class="metric">1st of ~50</p>
+          <p class="metric-label">teams, mostly full-time engineers</p>
+          <hr>
+          <h3>Company-wide AI hackathon win</h3>
+          <p class="meta">International Motors, 2026</p>
+          <p class="desc">A tool that turns vehicle health reports into preventive maintenance alerts for emissions parts. Pitched to executives and invited to parent company TRATON Group's international hackathon.</p>
+        </li>
+        <li class="card">
+          <p class="metric">800</p>
+          <p class="metric-label">vehicle configurations benchmarked</p>
+          <hr>
+          <h3>Engine benchmark against Cummins</h3>
+          <p class="meta">International Motors, 2026</p>
+          <p class="desc">The overall fuel efficiency comparison was a split. Segmenting by sales volume showed our engine led in the configurations that outsell the rest about 100 to 1.</p>
+        </li>
+        <li class="card">
+          <p class="metric">6 wafers</p>
+          <p class="metric-label">fabricated in two months</p>
+          <hr>
+          <h3>Process control for an HfO₂ etch</h3>
+          <p class="meta">VIP Semiconductors, Birck Nanotechnology Center, 2026</p>
+          <p class="desc">On an 8-person team building thin-film RC and RLC circuits. I own e-beam metal deposition, use SPC to separate wafer-to-wafer drift from within-wafer variation, and brief about 12 faculty and scientists each week.</p>
+        </li>
+      </ul>
+    </div>
   </section>
 
-  <section class="section container" id="experience">
-    <h2>Experience</h2>
-    <ol class="timeline">
-      <li>
-        <span class="when">Aug 2026 – now</span>
-        <div><span class="role">Undergraduate Researcher, VIP Semiconductors</span><p>Statistical Process Control Etch Team, Birck Nanotechnology Center</p></div>
-      </li>
-      <li>
-        <span class="when">May – Aug 2026</span>
-        <div><span class="role">R&amp;D Intern, International Motors</span><p>Emissions compliance data science, Chicago</p></div>
-      </li>
-      <li>
-        <span class="when">Jan 2026 – now</span>
-        <div><span class="role">Professional Development Chair, Purdue ECE Ambassadors</span><p>Co-led the first ECE Leadership Summit: 195 registrants, a $5K budget, and speakers from 6 firms</p></div>
-      </li>
-      <li>
-        <span class="when">Nov 2025 – now</span>
-        <div><span class="role">Mom and Dad's Day Chair, Theta Chi</span><p>Ran events for about 75 families each and raised $7,000 for the USO</p></div>
-      </li>
-      <li>
-        <span class="when">Aug 2025 – May 2026</span>
-        <div><span class="role">Undergraduate Researcher, Coherent and Quantum Optics Lab</span><p>Electronics design for Dr. Daniel Elliott's group</p></div>
-      </li>
-      <li>
-        <span class="when">May – Aug 2025</span>
-        <div><span class="role">Electrical Design Engineering Intern, Connelly Electric</span><p>BIM coordination on $10M+ industrial projects; launched VR inspection in the prefab shop</p></div>
-      </li>
-    </ol>
+  <section class="band band-steel" id="experience">
+    <div class="container">
+      <div class="band-head"><h2>Experience</h2></div>
+      <ol class="timeline">
+        <li><span class="when">Aug 2026 – now</span><div class="body"><span class="role">Undergraduate Researcher, VIP Semiconductors</span><p>Statistical Process Control Etch Team, Birck Nanotechnology Center</p></div></li>
+        <li><span class="when">May – Aug 2026</span><div class="body"><span class="role">R&amp;D Intern, International Motors</span><p>Emissions compliance data science, Chicago</p></div></li>
+        <li><span class="when">Jan 2026 – now</span><div class="body"><span class="role">Professional Development Chair, Purdue ECE Ambassadors</span><p>Co-led the first ECE Leadership Summit with 195 registrants, a $5K budget, and speakers from 6 firms</p></div></li>
+        <li><span class="when">Nov 2025 – now</span><div class="body"><span class="role">Mom and Dad's Day Chair, Theta Chi</span><p>Ran events for about 75 families each and raised $7,000 for the USO</p></div></li>
+        <li><span class="when">Aug 2025 – May 2026</span><div class="body"><span class="role">Undergraduate Researcher, Coherent and Quantum Optics Lab</span><p>Electronics design for Dr. Daniel Elliott's group</p></div></li>
+        <li><span class="when">May – Aug 2025</span><div class="body"><span class="role">Electrical Design Engineering Intern, Connelly Electric</span><p>BIM coordination on $10M+ industrial projects; launched VR inspection in the prefab shop</p></div></li>
+      </ol>
+    </div>
   </section>
 
-  <section class="section container" id="about">
-    <h2>About</h2>
-    <div class="about-grid">
-      <img class="portrait" src="assets/portrait.jpg" width="486" height="600" alt="Luke Hojnicki in a navy suit and blue tie.">
+  <section class="band" id="about">
+    <div class="container split">
       <div>
+        <h2>About</h2>
         <p>I'm a junior at Purdue studying electrical engineering, graduating in May 2028 with a 3.7 GPA and Dean's List every semester. I'm from Glen Ellyn, Illinois.</p>
         <p>I like problems where the answer comes from measuring carefully, whether that's a wafer, a sensor array, or 10,000 warranty claims. Next spring I'm studying at Universidad Carlos III de Madrid.</p>
-        <p>Outside of school I golf (6.2 handicap), backcountry ski, fly fish, and listen to a lot of the Beatles.</p>
+        <div class="tool-group interests">
+          <h3>Outside of school</h3>
+          <ul class="chips">
+            <li>Golf, 6.2 handicap</li>
+            <li>Backcountry skiing</li>
+            <li>Fly fishing</li>
+            <li>The Beatles</li>
+          </ul>
+        </div>
+      </div>
+      <div>
+        <h2>Toolkit</h2>
+        <div class="tool-group">
+          <h3>Hardware</h3>
+          <ul class="chips"><li>KiCad</li><li>PCB layout</li><li>Arduino</li><li>I²C and SPI</li><li>Oscilloscope debugging</li><li>Analog circuits</li></ul>
+        </div>
+        <div class="tool-group">
+          <h3>Cleanroom</h3>
+          <ul class="chips"><li>E-beam PVD</li><li>Photolithography (MA6)</li><li>Atomic layer deposition</li><li>Ellipsometry</li><li>Probe testing</li></ul>
+        </div>
+        <div class="tool-group">
+          <h3>Data and AI</h3>
+          <ul class="chips"><li>Python</li><li>Databricks</li><li>XGBoost</li><li>LLM APIs</li><li>Power BI</li><li>Excel</li><li>MATLAB</li><li>C</li></ul>
+        </div>
+        <div class="tool-group">
+          <h3>Methods</h3>
+          <ul class="chips"><li>Statistical process control</li><li>Design for Six Sigma (DMADV)</li><li>Statistical modeling</li></ul>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="section container" id="contact">
-    <h2>Contact</h2>
-    <ul class="contact-list">
-      <li><span>Email</span><a href="mailto:lhojnick@purdue.edu">lhojnick@purdue.edu</a></li>
-      <li><span>LinkedIn</span><a href="https://www.linkedin.com/in/luke-hojnicki">linkedin.com/in/luke-hojnicki</a></li>
-      <li><span>GitHub</span><a href="https://github.com/lhojnick">github.com/lhojnick</a></li>
-      <li><span>Resume</span><a href="assets/resume.pdf">Download PDF</a></li>
-    </ul>
+  <section class="band navy contact" id="contact">
+    <div class="container contact-grid">
+      <div>
+        <h2>Contact</h2>
+        <p class="muted lead">I'm looking for summer 2027 internships in semiconductors and technology consulting. Email is the fastest way to reach me.</p>
+        <ul class="contact-lines">
+          <li><span>Email</span><a href="mailto:lhojnick@purdue.edu">lhojnick@purdue.edu</a></li>
+          <li><span>LinkedIn</span><a href="https://www.linkedin.com/in/luke-hojnicki">linkedin.com/in/luke-hojnicki</a></li>
+          <li><span>GitHub</span><a href="https://github.com/lhojnick">github.com/lhojnick</a></li>
+        </ul>
+      </div>
+      <div class="actions">
+        <a class="button button-gold" href="mailto:lhojnick@purdue.edu">Email me</a>
+        <a class="button" href="assets/resume.pdf">Download resume</a>
+      </div>
+    </div>
   </section>
 </main>
 

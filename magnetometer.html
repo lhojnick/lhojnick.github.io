@@ -18,25 +18,26 @@
 </head>
 <body>
 
-<header class="site-header">
-  <div class="container">
+<header class="navy">
+  <div class="container topbar">
     <a class="brand" href="./">Luke Hojnicki</a>
     <nav aria-label="Main">
       <ul>
         <li><a href="./#work">Work</a></li>
         <li><a href="./#experience">Experience</a></li>
         <li><a href="./#about">About</a></li>
-        <li><a href="assets/resume.pdf">Resume</a></li>
+        <li><a href="./#contact">Contact</a></li>
       </ul>
     </nav>
   </div>
+  <div class="container case-hero">
+    <a class="back" href="./#work">Back to all work</a>
+    <h1>Multi-sensor magnetometer array</h1>
+    <p class="statement">Two daisy-chained circuit boards that wrap around an optical cavity and estimate the magnetic field at its center, built for Dr. Daniel Elliott's Coherent and Quantum Optics Lab at Purdue.</p>
+  </div>
 </header>
 
-<main class="case container">
-  <a class="back" href="./#work">Back to all work</a>
-  <h1>Multi-sensor magnetometer array</h1>
-  <p class="statement">Two daisy-chained circuit boards that wrap around an optical cavity and estimate the magnetic field at its center, built for Dr. Daniel Elliott's Coherent and Quantum Optics Lab at Purdue.</p>
-
+<main class="case-body container">
   <dl class="specs">
     <div><dt>Sensors</dt><dd>8 MEMSIC MMC5983MA, 3-axis AMR</dd></div>
     <div><dt>Resolution</dt><dd>0.0625 mG per count, 18-bit</dd></div>
@@ -119,7 +120,7 @@ Bz = ((float)rz - 131072UL) / 16384.0f;</code></pre>
     <p>I'd also wire the sensors' interrupt pin so the firmware stops polling, and add temperature tracking for long acquisitions. The design scales to eight boards, or 32 sensors, on one bus before the multiplexer runs out of addresses.</p>
     <p>I started this project with no PCB experience. The part I'm proudest of is the 32-page reference manual, written so the next student can bring the system up from an unpowered board without asking me anything.</p>
     <div class="actions">
-      <a class="button button-primary" href="assets/magnetometer-report.pdf">Read the full report (PDF)</a>
+      <a class="button button-gold" href="assets/magnetometer-report.pdf">Read the full report (PDF)</a>
       <a class="button" href="https://github.com/lhojnick/Magnetic-Sensor-Array">View the code on GitHub</a>
     </div>
   </section>
