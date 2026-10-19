@@ -5,124 +5,131 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Magnetometer Array | Luke Hojnicki</title>
 <meta name="description" content="Design of a two-board, eight-sensor magnetometer array for an optical cavity in Purdue's Coherent and Quantum Optics Lab.">
+<meta property="og:title" content="Multi-sensor magnetometer array">
+<meta property="og:description" content="Two daisy-chained boards with eight 3-axis sensors that measure the magnetic field at the center of an optical cavity.">
+<meta property="og:image" content="https://lhojnick.github.io/assets/og.png">
+<meta property="og:url" content="https://lhojnick.github.io/magnetometer.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=Literata:opsz,wght@7..72,400;7..72,500&family=JetBrains+Mono&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wdth,wght@75..100,400..700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<nav class="nav" aria-label="Main">
-  <a class="home" href="index.html">Luke Hojnicki</a>
-  <ul>
-    <li><a href="index.html#work">Work</a></li>
-    <li><a href="index.html#experience">Experience</a></li>
-    <li><a href="assets/resume.pdf">Resume</a></li>
-    <li><a href="index.html#contact">Contact</a></li>
-  </ul>
-</nav>
-
-<main>
-<header class="cs-hero">
-  <div class="wrap">
-    <h1>A magnetometer array that wraps around an optical cavity</h1>
-    <p class="lede">Quantum optics experiments are sensitive to stray magnetic fields. Dr. Elliott's lab needed to know the field at the exact spot where its optical cavity sits, inside a vacuum chamber, so it could be measured and cancelled. I designed the boards, firmware, and logging software to do that.</p>
-    <ul class="facts">
-      <li><span class="stat">8</span><span class="stat-label">3-axis sensors on 2 boards</span></li>
-      <li><span class="stat">0.0625 mG</span><span class="stat-label">resolution per count</span></li>
-      <li><span class="stat">~10 Hz</span><span class="stat-label">full-array update rate</span></li>
-      <li><span class="stat">2 layers</span><span class="stat-label">50 × 120 mm FR4, KiCad</span></li>
-    </ul>
+<header class="site-header">
+  <div class="container">
+    <a class="brand" href="./">Luke Hojnicki</a>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="./#work">Work</a></li>
+        <li><a href="./#experience">Experience</a></li>
+        <li><a href="./#about">About</a></li>
+        <li><a href="assets/resume.pdf">Resume</a></li>
+      </ul>
+    </nav>
   </div>
 </header>
 
-<section class="prose">
-  <div class="wrap split">
-    <div class="side">The problem</div>
-    <div>
-      <h2>You can't put a sensor where the experiment is</h2>
-      <p>The spot that matters is the center of the cavity, and a sensor can't sit there. So the board has a circular cutout that slides over the cavity, with four sensors at the 12, 3, 6, and 9 o'clock positions. Averaging their readings estimates the field at the center. A second identical board, mounted further along the cavity, adds four more sample points.</p>
-      <p>That averaged field is what the lab watches and drives toward zero with cancellation coils.</p>
+<main class="case container">
+  <a class="back" href="./#work">Back to all work</a>
+  <h1>Multi-sensor magnetometer array</h1>
+  <p class="statement">Two daisy-chained circuit boards that wrap around an optical cavity and estimate the magnetic field at its center, built for Dr. Daniel Elliott's Coherent and Quantum Optics Lab at Purdue.</p>
+
+  <dl class="specs">
+    <div><dt>Sensors</dt><dd>8 MEMSIC MMC5983MA, 3-axis AMR</dd></div>
+    <div><dt>Resolution</dt><dd>0.0625 mG per count, 18-bit</dd></div>
+    <div><dt>Update rate</dt><dd>About 10 Hz for all 8 sensors</dd></div>
+    <div><dt>Bus</dt><dd>I²C at 400 kHz through two TCA9546A switches</dd></div>
+    <div><dt>Board</dt><dd>2-layer FR4, 50 × 120 mm, designed in KiCad</dd></div>
+    <div><dt>My role</dt><dd>Schematic, layout, firmware, Python logger, manual</dd></div>
+  </dl>
+
+  <figure class="panel">
+    <img src="assets/pcb-wide.png" width="1464" height="623" alt="Top copper layer of the board: connectors and control chips on the left, a narrow routing neck in the middle, and four sensors around a circular cutout on the right.">
+    <ul class="regions">
+      <li><b>Control section</b>Regulator, I²C multiplexer, connectors</li>
+      <li><b>Routing neck</b>Keeps current away from the sensors</li>
+      <li><b>Sensor ring</b>Four 3-axis magnetometers around the cavity</li>
+    </ul>
+  </figure>
+
+  <section class="prose">
+    <h2>The problem</h2>
+    <p>Quantum optics experiments are sensitive to stray magnetic fields. The lab needed to know the field at the exact spot where its optical cavity sits, inside a vacuum chamber, so it could be measured and cancelled with external coils.</p>
+    <p>A sensor can't sit at the center of the cavity, so the board has a circular cutout that slides over it, with four sensors at the 12, 3, 6, and 9 o'clock positions. Averaging their readings estimates the field at the center. A second identical board, mounted further along the cavity, adds four more sample points.</p>
+    <figure>
+      <div class="paper">
+        <img src="assets/block-diagram.png" width="1190" height="455" alt="Block diagram: an Arduino Nano Every sends power, serial data, serial clock, and reset to Board 0 and Board 1. Each board has a voltage regulator, a multiplexer, and four magnetic field sensors.">
+      </div>
+      <figcaption>One Arduino drives both boards over a shared ribbon cable. Each board has its own regulator, multiplexer, and four sensors.</figcaption>
+    </figure>
+  </section>
+
+  <section class="prose">
+    <h2>Design decisions</h2>
+
+    <h3>I²C instead of SPI</h3>
+    <p>SPI's 10 MHz clock is 25 times faster than I²C's 400 kHz, but each sensor takes about 2 ms to convert a reading no matter how fast the bus is. Speed wasn't the bottleneck. SPI would have needed 36 traces for eight sensors, where I²C needs two shared lines.</p>
+
+    <h3>A multiplexer, because every sensor has the same address</h3>
+    <p>The MMC5983MA has a fixed I²C address (0x30), so eight of them on one bus would collide. A TCA9546A switch on each board connects one sensor at a time. The two switches use different addresses (0x70 and 0x71), which gives every sensor its own path.</p>
+    <div class="pair">
       <figure>
-        <img class="fig-light" src="assets/block-diagram.png" width="1190" height="455" alt="Block diagram: an Arduino Nano Every sends power, serial data, serial clock, and reset to Board 0 and Board 1. Each board has a voltage regulator, a multiplexer, and four magnetic field sensors.">
-        <figcaption>System overview. One Arduino drives both boards over a shared ribbon cable. Each board has its own regulator, multiplexer, and four sensors.</figcaption>
+        <div class="paper"><img src="assets/mux-schematic.png" width="894" height="898" alt="Schematic of the TCA9546A multiplexer with pull-up resistors on the upstream bus and on each of four downstream channels."></div>
+        <figcaption>Every downstream channel gets its own 2.7 kΩ pull-ups, since the switch doesn't buffer the bus.</figcaption>
+      </figure>
+      <figure>
+        <div class="paper"><img src="assets/sensor-schematic.png" width="974" height="474" alt="Schematic of one MMC5983MA sensor with a 1 microfarad supply capacitor and a 10 microfarad capacitor on the CAP pin."></div>
+        <figcaption>One of the four identical sensor circuits.</figcaption>
       </figure>
     </div>
-  </div>
-</section>
 
-<section class="prose">
-  <div class="wrap split">
-    <div class="side">Design decisions</div>
-    <div>
-      <h2>Four choices that shaped the board</h2>
+    <h3>The right capacitor for the regulator</h3>
+    <p>The LM3940 regulator needs a 33 µF output capacitor with ESR between 0.3 and 22 Ω to stay stable. A ceramic capacitor has too little ESR and makes it oscillate, so the board uses tantalum.</p>
 
-      <h3>I²C over SPI</h3>
-      <p>SPI is 25 times faster on paper, but each sensor takes about 2 ms to convert a reading no matter how fast the bus is. Speed wasn't the bottleneck. SPI would have needed 36 traces for eight sensors; I²C needs two shared lines.</p>
+    <h3>Keeping the board from becoming noise</h3>
+    <p>The hourglass shape is the noise strategy. Everything that carries real current sits in the control section, and only the eight signal traces cross the neck to the sensors. Near the sensors there are only ceramic capacitors, with no inductors or ferrite, and the board mounts with brass or nylon hardware.</p>
+    <figure>
+      <div class="panel">
+        <img src="assets/pcb-bottom-wide.png" width="1480" height="637" alt="Bottom copper layer, which provides return paths under the signal traces on top.">
+      </div>
+      <figcaption>Bottom copper. All signal routing is on the top layer; the bottom layer provides return paths.</figcaption>
+    </figure>
+  </section>
 
-      <h3>A multiplexer, because every sensor has the same address</h3>
-      <p>The MMC5983MA has a fixed I²C address (0x30), so eight of them on one bus would collide. A TI TCA9546A switch on each board isolates one sensor at a time. The two boards' switches get different addresses (0x70 and 0x71), which gives every sensor a unique path.</p>
-      <figure class="fig-pair">
-        <div>
-          <img class="fig-light" src="assets/mux-schematic.png" width="894" height="898" alt="Schematic of the TCA9546A multiplexer with pull-up resistors on the upstream bus and on each of four downstream channels.">
-          <figcaption>Multiplexer. Every downstream channel gets its own pull-ups, since the switch doesn't buffer.</figcaption>
-        </div>
-        <div>
-          <img class="fig-light" src="assets/sensor-schematic.png" width="974" height="474" alt="Schematic of one MMC5983MA sensor with a 1 microfarad supply capacitor and a 10 microfarad capacitor on the CAP pin.">
-          <figcaption>One of the four identical sensor circuits.</figcaption>
-        </div>
-      </figure>
-
-      <h3>The right capacitor for the regulator</h3>
-      <p>The LM3940 regulator needs a 33 µF output capacitor with ESR between 0.3 and 22 Ω to stay stable. A ceramic cap has too little ESR and makes it oscillate, so the board uses tantalum.</p>
-
-      <h3>Keeping the board itself from becoming noise</h3>
-      <p>The hourglass shape is the noise strategy. Everything that carries real current sits in the top section, and only the eight signal traces cross the narrow neck to the sensors. Near the sensors there are only ceramic capacitors, with no inductors or ferrite, and the board mounts with brass or nylon hardware.</p>
-      <figure class="fig-dark">
-        <img src="assets/pcb-top.png" width="623" height="1464" alt="Top copper layer with silkscreen labels.">
-        <img src="assets/pcb-bottom.png" width="637" height="1480" alt="Bottom copper layer providing return paths.">
-      </figure>
-      <figcaption>Top copper carries all the routing (left); bottom copper provides return paths (right).</figcaption>
-    </div>
-  </div>
-</section>
-
-<section class="prose">
-  <div class="wrap split">
-    <div class="side">Firmware and data</div>
-    <div>
-      <h2>From raw counts to a center-field reading</h2>
-      <p>The firmware cycles through all eight sensors about ten times a second: select the channel, trigger a measurement, wait for the conversion, read 18 bits per axis, and convert to gauss. Zero field sits at count 131,072, and 16,384 counts equal one gauss.</p>
-<pre><code>// convert 18-bit raw counts to gauss
+  <section class="prose">
+    <h2>Firmware and data</h2>
+    <p>The firmware cycles through all eight sensors about ten times a second. For each one it selects the channel, triggers a measurement, waits for the conversion, reads 18 bits per axis, and converts to gauss. Zero field sits at count 131,072, and 16,384 counts equal one gauss.</p>
+<pre><code>// 18-bit raw counts to gauss
 Bx = ((float)rx - 131072UL) / 16384.0f;
 By = ((float)ry - 131072UL) / 16384.0f;
 Bz = ((float)rz - 131072UL) / 16384.0f;</code></pre>
-      <p>Each sensor also has an on-chip SET/RESET coil. Taking a reading after each pulse and subtracting cancels the sensor's temperature-dependent offset, which matters on long runs. A Python logger records timestamped CSV data and flags any sensor that stops reporting.</p>
-      <figure>
-        <img class="photo" src="assets/mounted-photo.jpg" width="685" height="510" alt="Two magnetometer boards mounted in an aluminum frame around a cylindrical cavity, with ribbon cables running out the side.">
-        <figcaption>Boards mounted around the cavity in the lab's frame (earlier board revision shown; the final board mounts the same way).</figcaption>
-      </figure>
-    </div>
-  </div>
-</section>
+    <p>Each sensor also has an on-chip SET/RESET coil. Taking a reading after each pulse and subtracting cancels the sensor's temperature-dependent offset, which matters on long runs. A Python logger records timestamped CSV data and flags any sensor that stops reporting.</p>
+    <figure class="photo">
+      <img src="assets/mounted-photo.jpg" width="685" height="510" alt="Two magnetometer boards mounted in an aluminum frame around a cylindrical cavity, with ribbon cables running out the side.">
+      <figcaption>Boards mounted around the cavity in the lab's frame. This is an earlier board revision; the final board mounts the same way.</figcaption>
+    </figure>
+  </section>
 
-<section class="prose">
-  <div class="wrap split">
-    <div class="side">What I'd change</div>
-    <div>
-      <h2>Lessons for revision two</h2>
-      <p>Both boards came from one set of Gerber files to keep fabrication simple. That meant both multiplexers shipped with the same address, and one board had to be reworked by hand. A three-pad solder jumper would let each board pick its address.</p>
-      <p>I'd also wire the sensors' interrupt pin so the firmware stops polling, and add temperature tracking for long acquisitions. The design scales to eight boards (32 sensors) on one bus before the multiplexer runs out of addresses.</p>
-      <p>I came into this with no PCB experience. The part I'm proudest of is the 32-page reference manual, written so the next student can bring the system up from an unpowered board without asking me anything.</p>
-      <div class="next">
-        <a class="btn btn-solid" href="assets/magnetometer-report.pdf">Read the full technical report (PDF)</a>
-        <a class="btn btn-line" href="index.html#work">Back to all work</a>
-      </div>
+  <section class="prose">
+    <h2>What I'd change in revision two</h2>
+    <p>Both boards came from one set of Gerber files to keep fabrication simple. That meant both multiplexers shipped with the same address, and one board had to be reworked by hand. A three-pad solder jumper would let each board pick its address.</p>
+    <p>I'd also wire the sensors' interrupt pin so the firmware stops polling, and add temperature tracking for long acquisitions. The design scales to eight boards, or 32 sensors, on one bus before the multiplexer runs out of addresses.</p>
+    <p>I started this project with no PCB experience. The part I'm proudest of is the 32-page reference manual, written so the next student can bring the system up from an unpowered board without asking me anything.</p>
+    <div class="actions">
+      <a class="button button-primary" href="assets/magnetometer-report.pdf">Read the full report (PDF)</a>
+      <a class="button" href="https://github.com/lhojnick/Magnetic-Sensor-Array">View the code on GitHub</a>
     </div>
-  </div>
-</section>
+  </section>
 </main>
 
-<footer>Luke Hojnicki, Purdue University. Thanks to Dr. Daniel Elliott and the Coherent and Quantum Optics Lab.</footer>
+<footer class="site-footer">
+  <div class="container"><div class="footer-inner">
+    <span>© 2026 Luke Hojnicki</span>
+    <span>Thanks to Dr. Daniel Elliott and the Coherent and Quantum Optics Lab</span>
+  </div></div>
+</footer>
 </body>
 </html>
