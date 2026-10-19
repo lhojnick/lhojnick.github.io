@@ -235,3 +235,9 @@ p code { background: #e7ece8; padding: 1px 5px; border-radius: 2px; font-size: 0
 .nav { flex-wrap: wrap; }
 .nav .home { white-space: nowrap; }
 .photo { max-width: 560px; border-radius: 3px; }
+
+.portrait {
+  width: clamp(110px, 12vw, 150px); aspect-ratio: 486 / 600; object-fit: cover;
+  border-radius: 4px; margin-bottom: 28px;
+  box-shadow: 0 0 0 1px var(--rule);
+}
