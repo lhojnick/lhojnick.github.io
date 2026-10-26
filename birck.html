@@ -6,8 +6,8 @@
 <title>Birck Cleanroom | Luke Hojnicki</title>
 <meta name="description" content="Fabricating and probing thin-film RC circuits with an HfO2 dielectric in Purdue's Birck Nanotechnology Center, and using statistical process control to explain the variation.">
 <meta property="og:title" content="Thin-film RC circuits at Birck">
-<meta property="og:description" content="Cleanroom fabrication, electrical probing, and statistical process control on an HfO2 thin-film circuit flow.">
-<meta property="og:image" content="https://lukehojnicki.com/assets/og.png">
+<meta property="og:description" content="Cleanroom fabrication, capacitor probing, and statistical process control on an HfO2 thin-film circuit flow.">
+<meta property="og:image" content="https://lukehojnicki.com/assets/birck-wafer.jpg">
 <meta property="og:url" content="https://lukehojnicki.com/birck.html">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -24,6 +24,7 @@
     <nav aria-label="Main">
       <ul>
         <li><a href="./#work">Work</a></li>
+        <li><a href="birck.html">Cleanroom</a></li>
         <li><a href="./#experience">Experience</a></li>
         <li><a href="./#about">About</a></li>
         <li><a href="./#contact">Contact</a></li>
@@ -38,6 +39,18 @@
 </header>
 
 <main class="case-body container">
+  <figure class="hero-shot">
+    <img src="assets/birck-wafer.jpg" width="1090" height="1055" alt="Stitched microscope image of a 4-inch wafer showing rows of patterned test capacitors, resistors, and alignment marks.">
+    <figcaption>A full 4-inch wafer, stitched together from dozens of frames on the Keyence digital microscope. Each cluster is a set of capacitors, resistors, and RC circuits.</figcaption>
+  </figure>
+
+  <dl class="stats">
+    <div><dt>10</dt><dd>standalone capacitors probed, 100 to 1000 µm across</dd></div>
+    <div><dt>C1 to C6</dt><dd>track a known-good reference wafer</dd></div>
+    <div><dt>3.7×</dt><dd>swing on one capacitor from probe placement alone</dd></div>
+    <div><dt>2.2 nF</dt><dd>our circuit's design value, inside the stable range</dd></div>
+  </dl>
+
   <dl class="specs">
     <div><dt>Program</dt><dd>VIP Semiconductors@Birck, SPC Etch team</dd></div>
     <div><dt>Devices</dt><dd>Thin-film resistors and HfO₂ capacitors, RC and RLC circuits</dd></div>
@@ -48,21 +61,27 @@
   </dl>
 
   <section class="prose">
+    <p class="num">01</p>
     <h2>What we're building</h2>
     <p>The team builds simple passive circuits the way a fab would: deposit, pattern, etch, measure, repeat. Every step leaves a fingerprint on the final electrical numbers. A capacitor's value depends on how thick the HfO₂ came out, how cleanly the vias etched, and how well the top metal landed. That makes the circuits a good test vehicle for process control, because the probe station can tell you something went wrong upstream.</p>
     <figure>
       <div class="stack" role="img" aria-label="Cross section of the capacitor stack, bottom to top: silicon substrate, silicon dioxide, titanium nickel palladium bottom electrode, hafnium oxide dielectric with an etched via, and titanium aluminum top metal.">
         <div class="layer l-top"><span>Ti / Al top metal</span><b>5 / 150 nm</b></div>
-        <div class="layer l-hfo"><span>HfO₂ dielectric, via etched to bottom metal</span><b>200 ALD cycles</b></div>
+        <div class="layer l-hfo"><span>HfO₂ dielectric, via etched to bottom metal</span><b>~20 nm, 200 ALD cycles</b></div>
         <div class="layer l-bot"><span>Ti / Ni / Pd bottom electrode</span><b>5 / 20 / 10 nm</b></div>
         <div class="layer l-ox"><span>SiO₂</span><b>thermal oxide</b></div>
         <div class="layer l-si"><span>Si substrate</span><b>4-inch wafer</b></div>
       </div>
       <figcaption>Capacitor stack, not to scale. HfO₂ sits between two metal layers, and the RIE step opens windows through it so a probe can land on the bottom electrode.</figcaption>
     </figure>
+    <figure class="photo">
+      <img src="assets/birck-caps.jpg" width="1100" height="1100" alt="Microscope view of three test structures, each with two circular capacitor pads, thin interconnect, square contact pads, and long serpentine resistors. A 1 mm scale bar sits at the bottom.">
+      <figcaption>Up close: circular capacitor pads, square probe pads, and the long serpentine resistors that set each RC time constant. Scale bar is 1 mm.</figcaption>
+    </figure>
   </section>
 
   <section class="prose">
+    <p class="num">02</p>
     <h2>The process flow</h2>
     <p>Seven main steps, with a measurement after each one so variation can be traced back to the step that caused it.</p>
     <ol class="flow">
@@ -78,23 +97,45 @@
   </section>
 
   <section class="prose">
+    <p class="num">03</p>
     <h2>In the cleanroom</h2>
     <p>I'm trained on four Birck tools: the e-beam evaporator, the MA6 mask aligner, the Fiji ALD, and the Woollam ellipsometer. On the team I own the e-beam metal deposition step.</p>
     <h3>A full lithography pass</h3>
     <p>One session took a wafer from bare to inspected: spin coat on Spinner 3, align and expose on the MA6, develop, then a short oxygen plasma in the Tergeo cleaner to clear the thin resist scum that development leaves behind. Skip that descum and the metal can lift off with the resist, or not stick at all.</p>
-    <p>We finished with a stitched full-wafer image on the Keyence digital microscope. Looking at the whole wafer at once is the quickest way to spot underdeveloped corners or a pattern that drifts from center to edge before you commit metal to it.</p>
+    <p>We finished with a stitched full-wafer image on the Keyence, the one at the top of this page. Looking at the whole wafer at once is the quickest way to spot underdeveloped corners or a pattern that drifts from center to edge before you commit metal to it.</p>
+    <div class="gallery">
+      <figure>
+        <img src="assets/birck-yellow.jpg" width="1000" height="1333" loading="lazy" alt="Lithography bay under yellow light, with a hot plate set near 110 degrees, wafer carriers, tweezers, and handwritten bake notes.">
+        <figcaption>The lithography bay runs under yellow light so the resist isn't exposed by accident. Softbake is 110 °C on the hot plate.</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/birck-tool.jpg" width="1000" height="1333" loading="lazy" alt="A 4-inch silicon wafer and tweezers laid on a cleanroom wipe next to a vacuum tool and a laptop.">
+        <figcaption>A 4-inch wafer staged on a clean wipe, ready to load into a vacuum tool.</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/birck-plasma.jpg" width="1000" height="1067" loading="lazy" alt="Purple-blue plasma glow visible through a perforated viewport on a stainless steel vacuum chamber.">
+        <figcaption>Plasma glowing through a chamber viewport.</figcaption>
+      </figure>
+    </div>
     <ul class="chips gap-top">
       <li>E-beam evaporator</li><li>MA6 mask aligner</li><li>Fiji ALD</li><li>Woollam M-2000</li><li>Spinner 3</li><li>Tergeo plasma cleaner</li><li>Keyence VHX-7000</li><li>Probe station</li>
     </ul>
   </section>
 
   <section class="prose">
+    <p class="num">04</p>
     <h2>Probing the capacitors</h2>
-    <p>Once a wafer is done, the real question is whether the devices match the design. We probed ten standalone test capacitors, C1 through C10, with an LCR meter on the probe station.</p>
-    <p>The readings depended on where the probe tips landed. Touchdowns near the gap between pads read lower, and touchdowns toward the outer edges read higher. Same capacitor, different number, which means part of what we were measuring was the setup and not the device.</p>
+    <p>Once a wafer is done, the real question is whether the devices match the design. Each die has ten standalone test capacitors, C1 through C10, with the pad diameter growing 100 µm per step. Since capacitance scales with area, they should land on a straight line. We probed them with an LCR meter at 100 kHz and plotted the results against a known-good wafer from earlier in the program.</p>
+    <figure>
+      <div class="paper"><img src="assets/birck-cap-chart.png" width="1600" height="920" alt="Scatter plot of capacitance versus capacitor area. A gray reference line rises linearly to 6.5 nF. Our wafer's C1 to C6 sit near the line, C7 and C8 fall below it, C9's fourteen readings spread from about 3 to 5.9 nF, and C10 reads 1.4 nF with probes close and 5.2 nF with probes far apart."></div>
+      <figcaption>The chart I made for my part of the team's presentation. Gray is the working reference wafer; navy, gold, and red are our wafer.</figcaption>
+    </figure>
+    <p>The small capacitors behave. C1 through C6 track the reference, with one outlier at C5. From C7 up, the values fall consistently below the line, about 17 to 18% low on C7 and C8.</p>
+    <p>The big ones are where it gets strange. We probed C9 at 14 different spots and got anywhere from 3.06 to 5.85 nF. On C10, probes close together read 1.39 nF and probes at the far edges read 5.17 nF, about 3.7 times higher on the same device. Part of what we were measuring was the setup, not the capacitor.</p>
+    <p>It doesn't hurt our circuit. The RC design uses two C4-sized capacitors in parallel, about 2.2 nF, which sits right in the range that matches the reference. But it showed how much a measurement can move on placement alone, and that changed how we probe.</p>
     <div class="pair notes">
       <div class="note">
-        <h3>Possible causes</h3>
+        <h3>What could explain it</h3>
         <ul>
           <li>Fringing fields at the pad edges adding stray capacitance</li>
           <li>Leftover HfO₂ from an incomplete via etch</li>
@@ -108,25 +149,26 @@
           <li>Repeat touchdowns on one device to measure contact repeatability</li>
           <li>Sweep frequency to separate parasitics from true capacitance</li>
           <li>Redo the open correction at the real probe spacing</li>
-          <li>Standardize where the tips land on every pad</li>
+          <li>Record and standardize where the tips land on every pad</li>
         </ul>
       </div>
     </div>
-    <p>The second cause is the interesting one for our team. If leftover HfO₂ is real, the probe station is reporting an etch problem, and that's exactly the kind of link between an upstream step and an electrical result that SPC is supposed to catch.</p>
   </section>
 
   <section class="prose">
+    <p class="num">05</p>
     <h2>Why process control</h2>
-    <p>A single good wafer proves the recipe can work. SPC is about whether it works every time, and what to blame when it doesn't. A few ideas shaped how I think about our data:</p>
+    <p>A single good wafer proves the recipe can work. SPC is about whether it works every time, and what to blame when it doesn't. A few ideas shape how I think about our data:</p>
     <h3>Two levels of variation</h3>
     <p>Spread across one wafer and drift from one wafer to the next have different causes, so they get charted separately. Within-wafer spread points at uniformity, like plasma density or film thickness. Wafer-to-wafer drift points at the chamber or the recipe changing over time.</p>
     <h3>The first wafer is different</h3>
     <p>A cold or freshly cleaned etch chamber often runs differently on its first wafer. Fabs handle this with warm-up or seasoning wafers so the first product wafer isn't the one that absorbs it. On a student team running a few wafers at a time, that effect can look like a real trend if you don't plan for it.</p>
     <h3>Trust the gauge first</h3>
-    <p>Before a control chart means anything, the measurement has to be repeatable. Gauge R&amp;R separates variation in the parts from variation in the measuring, and our capacitor probing is a live example of why: if tip placement moves the reading, that noise would show up on the chart looking like process variation. We do the analysis in JMP in the probe room.</p>
+    <p>Before a control chart means anything, the measurement has to be repeatable. Gauge R&amp;R separates variation in the parts from variation in the measuring, and the C9 and C10 readings above are a live example of why: if tip placement moves the number, that noise lands on the chart looking like process variation. We do the analysis in JMP in the probe room.</p>
   </section>
 
   <section class="prose">
+    <p class="num">06</p>
     <h2>What's next</h2>
     <p>Probe station training is the next step, so I can run the electrical measurements on my own. I've also requested training on the Plasma-Therm Apex ICP-RIE, the tool our team charts, and the Filmetrics F40-UV for film thickness. The team presents results at Birck's fall poster session, which industry partners attend.</p>
     <div class="actions">

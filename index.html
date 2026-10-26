@@ -25,6 +25,7 @@
     <nav aria-label="Main">
       <ul>
         <li><a href="#work">Work</a></li>
+        <li><a href="birck.html">Cleanroom</a></li>
         <li><a href="#experience">Experience</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#contact">Contact</a></li>
@@ -35,8 +36,8 @@
   <div class="container hero-grid">
     <div>
       <h1>Luke Hojnicki</h1>
-      <p class="statement">I design circuit boards, run statistical process control in the cleanroom, and build AI tools that cut manual review for engineering teams.</p>
-      <p class="sub">Electrical engineering junior at Purdue, concentrating in microelectronics and semiconductors. Looking for summer 2027 internships in semiconductors and technology consulting.</p>
+      <p class="statement big">Boards, wafers, and the data in between.</p>
+      <p class="sub">I design circuit boards, fabricate and probe devices in Purdue's Birck cleanroom, and build AI tools that cut manual review for engineering teams. Electrical engineering junior concentrating in microelectronics and semiconductors, looking for summer 2027 internships.</p>
       <div class="actions">
         <a class="button button-gold" href="assets/resume.pdf">View resume</a>
         <a class="button" href="#work">See my work</a>
@@ -60,7 +61,7 @@
   <section class="band" id="work">
     <div class="container">
       <div class="band-head">
-        <h2>Selected work</h2>
+        <h2><span class="num">01</span>Selected work</h2>
         <p>Hardware, process data, and AI tools I've built or led.</p>
       </div>
 
@@ -81,6 +82,21 @@
           <p class="desc">Two daisy-chained boards with eight 3-axis sensors that wrap around an optical cavity inside a vacuum chamber and estimate the magnetic field at its center. I did the schematic, layout, firmware, Python logger, and a 32-page manual.</p>
           <div class="actions">
             <a class="button button-gold" href="magnetometer.html">Read the case study</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="feature feature-alt">
+        <a class="feature-media photo-media" href="birck.html" aria-label="Birck cleanroom case study">
+          <img src="assets/birck-wafer.jpg" width="1090" height="1055" alt="Stitched microscope image of a 4-inch wafer covered in patterned test capacitors and resistors.">
+        </a>
+        <div class="feature-body">
+          <p class="tag">Case study</p>
+          <h3><a href="birck.html">Thin-film RC circuits at Birck</a></h3>
+          <p class="meta">VIP Semiconductors, Birck Nanotechnology Center, 2026</p>
+          <p class="desc">Resistors and HfO₂ capacitors on 4-inch silicon wafers, built in a three-mask cleanroom flow. I own e-beam metal deposition, run lithography, and probe the capacitors. Probe placement alone moved one capacitor's reading by 3.7 times, which is why our process control starts with the measurement.</p>
+          <div class="actions">
+            <a class="button button-gold" href="birck.html">Read the case study</a>
           </div>
         </div>
       </article>
@@ -110,22 +126,39 @@
           <p class="meta">International Motors, 2026</p>
           <p class="desc">The overall fuel efficiency comparison was a split. Segmenting by sales volume showed our engine led in the configurations that outsell the rest about 100 to 1.</p>
         </li>
-        <li class="card">
-          <p class="metric">6 wafers</p>
-          <p class="metric-label">fabricated in two months</p>
-          <hr>
-          <h3><a href="birck.html">Process control for an HfO₂ etch</a></h3>
-          <p class="meta">VIP Semiconductors, Birck Nanotechnology Center, 2026</p>
-          <p class="desc">On an 8-person team building thin-film RC and RLC circuits. I own e-beam metal deposition, run lithography, and probe capacitors to trace electrical variation back to the etch with SPC.</p>
-          <p class="card-link"><a href="birck.html">Read about the cleanroom work</a></p>
+      </ul>
+    </div>
+  </section>
+
+  <section class="band band-steel" id="recent">
+    <div class="container">
+      <div class="band-head">
+        <h2><span class="num">02</span>Recent</h2>
+        <p>What I've been up to lately.</p>
+      </div>
+      <ul class="recent">
+        <li>
+          <p class="date">Oct 2026</p>
+          <h3>Presented capacitor probing results to the VIP team</h3>
+          <p>Plotted our wafer against a known-good reference and showed probe placement moving one reading 3.7 times. <a href="birck.html">See the chart</a></p>
+        </li>
+        <li>
+          <p class="date">Oct 2026</p>
+          <h3>Full lithography pass and full-wafer inspection at Birck</h3>
+          <p>Spin coat, MA6 exposure, develop, plasma descum, then a stitched image of the whole wafer on the Keyence.</p>
+        </li>
+        <li>
+          <p class="date">Summer 2026</p>
+          <h3>Won International Motors' company-wide AI hackathon</h3>
+          <p>First of about 50 teams with a predictive maintenance tool for emissions parts.</p>
         </li>
       </ul>
     </div>
   </section>
 
-  <section class="band band-steel" id="experience">
+  <section class="band" id="experience">
     <div class="container">
-      <div class="band-head"><h2>Experience</h2></div>
+      <div class="band-head"><h2><span class="num">03</span>Experience</h2></div>
       <ol class="timeline">
         <li><span class="when">Aug 2026 – now</span><div class="body"><span class="role">Undergraduate Researcher, VIP Semiconductors</span><p>Statistical Process Control Etch Team, Birck Nanotechnology Center</p></div></li>
         <li><span class="when">May – Aug 2026</span><div class="body"><span class="role">R&amp;D Intern, International Motors</span><p>Emissions compliance data science, Chicago</p></div></li>
@@ -137,10 +170,10 @@
     </div>
   </section>
 
-  <section class="band" id="about">
+  <section class="band band-steel" id="about">
     <div class="container split">
       <div>
-        <h2>About</h2>
+        <h2><span class="num">04</span>About</h2>
         <p>I'm a junior at Purdue studying electrical engineering, graduating in May 2028 with a 3.7 GPA and Dean's List every semester. I'm from Glen Ellyn, Illinois.</p>
         <p>I like problems where the answer comes from measuring carefully, whether that's a wafer, a sensor array, or 10,000 warranty claims. Next spring I'm studying at Universidad Carlos III de Madrid.</p>
         <div class="tool-group interests">
@@ -154,7 +187,7 @@
         </div>
       </div>
       <div>
-        <h2>Toolkit</h2>
+        <h2><span class="num">05</span>Toolkit</h2>
         <div class="tool-group">
           <h3>Hardware</h3>
           <ul class="chips"><li>KiCad</li><li>PCB layout</li><li>Arduino</li><li>I²C and SPI</li><li>Oscilloscope debugging</li><li>Analog circuits</li></ul>
@@ -178,7 +211,7 @@
   <section class="band navy contact" id="contact">
     <div class="container contact-grid">
       <div>
-        <h2>Contact</h2>
+        <h2><span class="num">06</span>Contact</h2>
         <p class="muted lead">I'm looking for summer 2027 internships in semiconductors and technology consulting. Email is the fastest way to reach me.</p>
         <ul class="contact-lines">
           <li><span>Email</span><a href="mailto:lhojnick@purdue.edu">lhojnick@purdue.edu</a></li>
